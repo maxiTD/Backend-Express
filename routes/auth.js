@@ -23,7 +23,7 @@ router.post('/new',
             createUser);
 
 router.post('/',
-            [//middlewares
+            [
                 check('email', 'El email es obligatorio').not().isEmpty(),
                 check('email', 'Revise el email ingresado').isEmail(),
                 check('password', 'El password debe tener al menos 6 caracteres').isLength({min:6}),
