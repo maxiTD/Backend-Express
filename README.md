@@ -1,4 +1,16 @@
 # Backend-Express
+
+## Dependencies:
+**bcryptjs 2.8.5**
+**cors 10.0.0**
+**dotenv**
+**express 4.17.1**
+**express-validator 6.13.0**
+**jsonwebtoken 8.5.1**
+**mongoose 6.0.11**
+**nodemon 2.0.13**
+**request 2.88.2**
+
 ## You must follow the next steps in order to execute the backend:
 **1) npm install**
 ###

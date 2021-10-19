@@ -17,10 +17,12 @@ const getPosts = async(req, res = response) => {
 
 const getImages = async(req, res = response) => {
 
+    //necesito recibir el pageSize (del front)
+    const {pageNumber, pageSize} = req.query;
+
     try {
 
-        const page = !req.body.page ? 0 : req.body.page;
-        const pageSize = 10;
+        const page = !pageNumber ? 0 : pageNumber;
         const offset = page * pageSize;
         const limit = pageSize;
 
@@ -34,8 +36,9 @@ const getImages = async(req, res = response) => {
 
             return res.json({
                 ok: true,
+                totalPages: Math.ceil(body.length / limit),
+                pageSize,
                 data: data.slice(offset, offset+limit),
-                totalPages: Math.ceil(body.length / limit)
             });
         });
 
