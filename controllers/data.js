@@ -17,7 +17,6 @@ const getPosts = async(req, res = response) => {
 
 const getImages = async(req, res = response) => {
 
-    //necesito recibir el pageSize (del front)
     const {pageNumber, pageSize} = req.query;
 
     try {
