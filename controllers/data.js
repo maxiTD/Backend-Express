@@ -21,9 +21,9 @@ const getImages = async(req, res = response) => {
 
     try {
 
-        const page = !pageNumber ? 0 : pageNumber;
+        const page = !pageNumber ? 1 : pageNumber;
         const offset = page * pageSize;
-        const limit = pageSize;
+        const limit = Number(offset) + Number(pageSize);
 
         Request.get("https://jsonplaceholder.typicode.com/photos", (error, response, body) => {
 
@@ -35,9 +35,9 @@ const getImages = async(req, res = response) => {
 
             return res.json({
                 ok: true,
-                totalPages: Math.ceil(body.length / limit),
+                totalPages: Math.ceil(data.length / pageSize),
                 pageSize,
-                data: data.slice(offset, offset+limit),
+                data: data.slice((offset - pageSize), (limit - pageSize)),
             });
         });
 
