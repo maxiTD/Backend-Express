@@ -3,6 +3,26 @@ const { dbConnection } = require('./db/config');
 const cors = require('cors');
 require('dotenv').config();
 
+//CORS config
+//Lista de dominios permitidos
+const whitelist = ['http://localhost:3000', 'http://www.example.com/'];
+//Comprobar si el dominio de la peticion es permitido
+const corsOptions = {
+    origin: function (origin, callback) {
+        /*
+         * si el domino es "undefined" (porque se carga la página en el mismo origen al que está realizando
+         * llamadas a la API, al usar Postman por ejemplo) o si el dominio esta en la lista de permitidos, permitir.
+         * Caso contrario, rechazar la petición.
+         */
+        if (origin === undefined || whitelist.indexOf(origin) !== -1) {
+            console.log("origin " + origin);
+            callback(null, true)
+        } else {
+            callback(new Error('Not allowed by CORS'))
+        }
+    },
+}
+
 //Crear el servidor de Express
 const app = express();
 
@@ -10,7 +30,7 @@ const app = express();
 dbConnection();
 
 //CORS
-app.use(cors());
+app.use(cors(corsOptions));
 
 //Lectura y parseo del body
 app.use(express.json());

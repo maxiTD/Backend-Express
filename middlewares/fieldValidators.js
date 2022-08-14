@@ -4,7 +4,7 @@ const fieldsValidate = (req, res, next) => {
 
     //Obteber los errores de las validaciones anteriores
     const errors = validationResult(req);
-    //Si hay errores, se retorna un error 400 con la lista de errores
+    //Si hay errores, se retornan
     if (!errors.isEmpty()) {
         return res.status(400).json({
             ok: false,
