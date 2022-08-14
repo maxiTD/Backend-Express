@@ -34,6 +34,9 @@ app.use(cors(corsOptions));
 //Lectura y parseo del body
 app.use(express.json());
 
+//Directorio público
+app.use(express.static('public'));
+
 //Rutas
 app.use('/api/auth', require('./routes/auth'));
 app.use('/api/data', require('./routes/data'));
