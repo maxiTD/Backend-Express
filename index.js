@@ -5,7 +5,7 @@ require('dotenv').config();
 
 //CORS config
 //Lista de dominios permitidos
-const whitelist = ['http://localhost:3000', 'http://www.example.com/'];
+const whitelist = ['http://localhost:3000'];
 //Comprobar si el dominio de la peticion es permitido
 const corsOptions = {
     origin: function (origin, callback) {
