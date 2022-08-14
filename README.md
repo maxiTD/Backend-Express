@@ -1,5 +1,8 @@
 # >>Backend-Express<<
 
+## The backend has been deployed on Heroku:
+**Endpoint: https://mmtd-backend-express.herokuapp.com/api**
+
 ## Dependencies:
 **bcryptjs ^2.4.3**\
 **cors ^2.8.5**\
